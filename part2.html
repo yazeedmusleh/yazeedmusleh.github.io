@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 2 - Part 2</title>
+    <script>
+        function calculate() {
+            // Get user input
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const num3 = parseFloat(document.getElementById('num3').value);
+
+            // Check if input is valid numbers
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                document.getElementById('result').textContent = "Please enter valid numbers.";
+                return;
+            }
+
+            // Calculate sum, average, product, min, and max
+            const sum = num1 + num2 + num3;
+            const average = sum / 3;
+            const product = num1 * num2 * num3;
+            const min = Math.min(num1, num2, num3);
+            const max = Math.max(num1, num2, num3);
+
+            // Display results
+            document.getElementById('result').textContent = `Sum: ${sum}, Average: ${average.toFixed(2)}, Product: ${product}, Min: ${min}, Max: ${max}`;
+        }
+
+        function clearForm() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('num3').value = '';
+            document.getElementById('result').textContent = '';
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="num1">Number 1:</label>
+        <input type="text" id="num1">
+        <br>
+        <label for="num2">Number 2:</label>
+        <input type="text" id="num2">
+        <br>
+        <label for="num3">Number 3:</label>
+        <input type="text" id="num3">
+        <br>
+        <button type="button" onclick="calculate()">Calculate</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+    <p id="result"></p>
+    <p><a href="hw2.html">Back to Homework 2</a></p>
+</body>
+</html>
