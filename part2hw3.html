@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Commission Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sales Commission Calculator</h1>
+    <form id="commissionForm">
+        <label for="salespersonName">Seller's Name:</label>
+        <input type="text" id="salespersonName" placeholder="Enter name" required><br><br>
+
+        <table>
+            <tr>
+                <th>Item#</th>
+                <th>Price</th>
+                <th>Qty Sold</th>
+                <th>Total $</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>$20.99</td>
+                <td><input type="number" id="qtyItem1" min="0" required></td>
+                <td><input type="text" id="totalItem1" readonly></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>$12.75</td>
+                <td><input type="number" id="qtyItem2" min="0" required></td>
+                <td><input type="text" id="totalItem2" readonly></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>$9.95</td>
+                <td><input type="number" id="qtyItem3" min="0" required></td>
+                <td><input type="text" id="totalItem3" readonly></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>$35.89</td>
+                <td><input type="number" id="qtyItem4" min="0" required></td>
+                <td><input type="text" id="totalItem4" readonly></td>
+            </tr>
+            <tr>
+                <td>Total Amount Sold</td>
+                <td></td>
+                <td></td>
+                <td><input type="text" id="totalSold" readonly></td>
+            </tr>
+            <tr>
+                <td>Total Weekly Earnings</td>
+                <td></td>
+                <td></td>
+                <td><input type="text" id="totalEarnings" readonly></td>
+            </tr>
+        </table>
+
+        <br>
+        <input type="button" value="Calculate" onclick="calculateEarnings()">
+        <input type="reset" value="Clear Form">
+    </form>
+
+    <script>
+        function calculateEarnings() {
+            // Get quantity sold for each item
+            const qtyItem1 = parseInt(document.getElementById('qtyItem1').value) || 0;
+            const qtyItem2 = parseInt(document.getElementById('qtyItem2').value) || 0;
+            const qtyItem3 = parseInt(document.getElementById('qtyItem3').value) || 0;
+            const qtyItem4 = parseInt(document.getElementById('qtyItem4').value) || 0;
+
+            // Calculate total sold and total earnings
+            const totalSold = (qtyItem1 * 20.99) + (qtyItem2 * 12.75) + (qtyItem3 * 9.95) + (qtyItem4 * 35.89);
+            const totalEarnings = 250 + (totalSold * 0.09);
+
+            // Display results with two decimal places
+            document.getElementById('totalSold').value = totalSold.toFixed(2);
+            document.getElementById('totalEarnings').value = totalEarnings.toFixed(2);
+        }
+    </script>
+</body>
+</html>
