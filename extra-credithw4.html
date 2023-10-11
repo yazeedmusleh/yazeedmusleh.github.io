@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hollow Square Generator</title>
+    <style>
+        #result {
+            font-family: monospace;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hollow Square Generator</h1>
+    <form>
+        <label for="number">Enter a number (2-10):</label>
+        <input type="text" id="number" name="number">
+        <button type="button" onclick="generateSquare()">Generate</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+    <div id="result"></div>
+    
+    <script>
+        function generateSquare() {
+            const inputNumber = parseInt(document.getElementById("number").value);
+            const resultDiv = document.getElementById("result");
+
+            if (isNaN(inputNumber) || inputNumber < 2 || inputNumber > 10) {
+                resultDiv.textContent = "Invalid input. Please enter a number between 2 and 10.";
+            } else {
+                let square = "";
+                for (let i = 0; i < inputNumber; i++) {
+                    for (let j = 0; j < inputNumber; j++) {
+                        if (i === 0 || i === inputNumber - 1 || j === 0 || j === inputNumber - 1) {
+                            square += "* ";
+                        } else {
+                            square += "  ";
+                        }
+                    }
+                    square += "\n";
+                }
+                resultDiv.textContent = square;
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("number").value = "";
+            document.getElementById("result").textContent = "";
+        }
+    </script>
+    <p><a href="hw4.html">Back to Homework 4</a></p>
+</body>
+</html>
