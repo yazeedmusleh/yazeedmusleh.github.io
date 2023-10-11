@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn about Compound Interest</title>
+    <style>
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color:red;
+            color: white;
+        }
+
+        tr:nth-child(odd) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learn about Compound Interest</h1>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function calculateCompoundInterest(principal, rate, years) {
+            var table = '<table>';
+            table += '<tr><th>Year</th><th>Amount on deposit</th><th>Interest Rate</th></tr>';
+            for (var r = rate; r <= rate; r++) {
+                for (var year = 1; year <= years; year++) {
+                    principal *= (1 + r);
+                    table += '<tr>';
+                    table += '<td>' + year + '</td>';
+                    table += '<td>' + principal.toFixed(2) + '</td>';
+                    table += '<td>' + (r * 100) + '%</td>';
+                    table += '</tr>';
+                }
+            }
+            table += '</table>';
+            return table;
+        }
+
+        $(document).ready(function() {
+            var content = calculateCompoundInterest(1000, 0.05, 5) +
+                calculateCompoundInterest(1000, 0.06, 5) +
+                calculateCompoundInterest(1000, 0.07, 5);
+
+            $('#results').html(content);
+        });
+    </script>
+
+    <div id="results"></div>
+    <p><a href="hw4.html">Back to Homework 4</a></p>
+</body>
+</html>
