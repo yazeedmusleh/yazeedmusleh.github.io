@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework 4 - Part 1</title>
+</head>
+<body>
+    <h1>Part 1 - Using Looping Statements</h1>
+
+    <h2>Using the for statement</h2>
+    <script>
+        function calculateForLoop() {
+            var product = 1;
+            var sum = 0;
+
+            for (var i = 5; i <= 25; i += 4) {
+                product *= i;
+                sum += i;
+            }
+
+            document.write("The result of 5 * 9 * 13 * 17 * 21 * 25 is " + product.toLocaleString() + "<br>");
+            document.write("The result of 5 + 9 + 13 + 17 + 21 + 25 is " + sum.toLocaleString());
+        }
+
+        calculateForLoop();
+    </script>
+
+    <h2>Using the while statement</h2>
+    <script>
+        function calculateWhileLoop() {
+            var product = 1;
+            var sum = 0;
+            var i = 3;
+
+            while (i <= 18) {
+                product *= i;
+                sum += i;
+                i += 3;
+            }
+
+            document.write("The result of 3 * 6 * 9 * 12 * 15 * 18 is " + product.toLocaleString() + "<br>");
+            document.write("The result of 3 + 6 + 9 + 12 + 15 + 18 is " + sum.toLocaleString());
+        }
+
+        calculateWhileLoop();
+    </script>
+    <p><a href="hw4.html">Back to Homework 4</a></p>
+</body>
+</html>
