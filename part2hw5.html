@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Part 2 - Open Websites</title>
+</head>
+<body>
+  <h1>Part 2 - Open Websites</h1>
+  <label>Select a website to open:</label>
+  <select id="websiteSelect">
+    <option value="">Choose a website</option>
+    <option value="https://www.google.com">Google</option>
+    <option value="https://www.github.com">Github</option>
+    <option value="https://www.openai.com">OpenAI</option>
+  </select>
+  <br><br>
+  <button id="openWebsiteBtn">Open Website</button>
+
+<script> 
+  document.addEventListener("DOMContentLoaded", function () {
+    const openWebsiteBtn = document.getElementById("openWebsiteBtn");
+    const websiteSelect = document.getElementById("websiteSelect");
+  
+    openWebsiteBtn.addEventListener("click", function () {
+      const selectedWebsite = websiteSelect.value;
+      if (selectedWebsite) {
+        window.open(selectedWebsite, "_blank");
+      }
+    });
+  });
+    </script>
+    <br><br>
+    <a href="hw5.html">Back to Homework 5</a>
+</body>
+</html>
