@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Part 1 - User Data</title>
+</head>
+<body>
+  <h1>Part 1 - User Data</h1>
+  <form id="userDataForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required><br><br>
+
+    <label>Age Group:</label><br>
+    <input type="radio" id="ageLessThan21" name="ageGroup" value="lessThan21"> <label for="ageLessThan21">Less than 21</label><br>
+    <input type="radio" id="age21To50" name="ageGroup" value="21To50"> <label for="age21To50">21 to 50</label><br>
+    <input type="radio" id="ageOver50" name="ageGroup" value="over50"> <label for="ageOver50">Over 50</label><br><br>
+
+    <label>Browsers Used:</label><br>
+    <input type="checkbox" id="firefox" name="browsers" value="Firefox"> <label for="firefox">Firefox</label><br>
+    <input type="checkbox" id="edge" name="browsers" value="Edge"> <label for="edge">Edge</label><br>
+    <input type="checkbox" id="chrome" name="browsers" value="Chrome"> <label for="chrome">Chrome</label><br>
+    <input type="checkbox" id="safari" name="browsers" value="Safari"> <label for="safari">Safari</label><br><br>
+
+    <label for="movieType">Favorite Movie Genre:</label>
+    <select id="movieType" name="movieType" required>
+      <option value="" disabled selected>Select a movie genre</option>
+      <option value="Action">Action</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Documentary">Documentary</option>
+      <option value="ScienceFiction">Science Fiction</option>
+    </select><br><br>
+
+    <button type="button" id="submitBtn">Submit</button>
+    <button type="button" id="clearBtn">Clear</button>
+  </form>
+<br>
+  <div id="output"></div>
+  <br>
+
+  <a href="hw5.html">Back to Homework 5</a>
+
+  <script > document.addEventListener("DOMContentLoaded", function () {
+    const userDataForm = document.getElementById("userDataForm");
+    const output = document.getElementById("output");
+  
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.addEventListener("click", function () {
+      const fullName = document.getElementById("fullName").value;
+      const ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+      const browsers = document.querySelectorAll('input[name="browsers"]:checked');
+      const movieType = document.getElementById("movieType").value;
+  
+      if (!fullName || !ageGroup || browsers.length === 0 || !movieType) {
+        output.innerHTML = "Error: Please fill out all fields!";
+      } else {
+        output.innerHTML = "Thanks, your data was submitted!";
+      }
+    });
+  
+    const clearBtn = document.getElementById("clearBtn");
+    clearBtn.addEventListener("click", function () {
+      userDataForm.reset();
+      output.innerHTML = "";
+    });
+  });
+      </script>
+</body>
+</html>
