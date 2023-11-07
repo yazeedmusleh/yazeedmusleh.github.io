@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>State Information</title>
+</head>
+<body>
+    <h1>State Information</h1>
+   
+    <form id="stateInfoForm">
+        <label for="stateInput">Enter State Name or Abbreviation: </label>
+        <input type="text" id="stateInput" />
+        <button type="button" onclick="getStateInfo()">Get State Info</button>
+        <button type="button" onclick="clearForm()">Clear Form</button>
+        <div id="outputArea"></div>
+    </form>
+    <script>
+        // Define your state data in a two-dimensional array
+        const stateData = [
+            ["AL", "Alabama", "Montgomery", "4,903,185"],
+            ["AK", "Alaska", "Juneau", "731,545"],
+            ["AZ", "Arizona", "Phoenix", "7,278,717"],
+            ["AR", "Arkansas", "Little Rock", "3,017,825"],
+            ["CA", "California", "Sacramento", "39,512,223"],
+            ["CO", "Colorado", "Denver", "5,758,736"],
+            // Add more states as needed
+        ];
+
+        function getStateInfo() {
+            const stateInput = document.getElementById("stateInput").value.trim().toUpperCase();
+            const outputArea = document.getElementById("outputArea");
+            let found = false;
+
+            // Loop through the state data to find the matching state
+            for (const state of stateData) {
+                if (state[0] === stateInput || state[1].toUpperCase() === stateInput) {
+                    found = true;
+                    outputArea.innerHTML = `
+                        <p>Thanks for your inquiry, here is the information you requested:</p>
+                        <p>State Abbr = ${state[0]}</p>
+                        <p>State Name = ${state[1]}</p>
+                        <p>Capital = ${state[2]}</p>
+                        <p>Population = ${state[3]}</p>
+                    `;
+                    break;
+                }
+            }
+
+            if (!found) {
+                outputArea.innerHTML = "Sorry, we do not have information about this state!";
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("stateInput").value = "";
+            document.getElementById("outputArea").innerHTML = "";
+        }
+    </script>
+    <br>
+     <a href="hw5.html">Back to Homework 5</a>
+</body>
+</html>
