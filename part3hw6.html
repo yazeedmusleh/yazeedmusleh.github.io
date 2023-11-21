@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Formatter</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Part 3: Phone Number Formatter</h1>
+
+<form id="phoneForm">
+    
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+    <label for="areaCode">Area Code:</label>
+    <input type="text" id="areaCode" name="areaCode" readonly>
+    <label for="firstThreeDigits">First 3 Digits:</label>
+    <input type="text" id="firstThreeDigits" name="firstThreeDigits" readonly>
+    <label for="lastFourDigits">Last 4 Digits:</label>
+    <input type="text" id="lastFourDigits" name="lastFourDigits" readonly>
+
+    <button type="button" onclick="formatPhoneNumber()">Format Phone Number</button>
+
+    <button type="button" onclick="clearForm()">Clear Form</button>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <p><a href="hw6.html">Back to Homework 6</a></p>
+</form>
+
+<script>
+    
+    $(document).ready(function(){
+        $('#phoneNumber').mask('(000) 000-0000', {placeholder: " "});
+    });
+
+    function formatPhoneNumber() {
+        
+        var phoneNumber = $('#phoneNumber').val();
+
+        var regex = /^\(\d{3}\) \d{3}-\d{4}$/;
+
+        if (regex.test(phoneNumber)) {
+            
+            var parts = phoneNumber.match(/\d+/g);
+            $('#areaCode').val(parts[0]);
+            $('#firstThreeDigits').val(parts[1]);
+            $('#lastFourDigits').val(parts[2]);
+            
+            $('#errorMessage').text('');
+        } else {
+            
+            $('#errorMessage').text('Please enter the phone number in the format (XXX) XXX-XXXX.');
+            
+            $('#areaCode').val('');
+            $('#firstThreeDigits').val('');
+            $('#lastFourDigits').val('');
+        }
+    }
+
+    function clearForm() {
+        $('#phoneNumber').val('');
+        $('#areaCode').val('');
+        $('#firstThreeDigits').val('');
+        $('#lastFourDigits').val('');
+        $('#errorMessage').text('');
+    }
+</script>
+
+</body>
+</html>
