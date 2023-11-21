@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+<h1>Part 2: Character Search</h1>
+
+
+<form id="searchForm">
+    <label for="content">Long Content:</label>
+    <textarea id="content" rows="4" cols="50"></textarea>
+
+    <br>
+
+    <label for="searchChar">Single Character:</label>
+    <input type="text" id="searchChar" maxlength="1">
+
+    <br>
+
+    <input type="button" value="Submit" onclick="searchCharacter()">
+</form>
+
+
+<div id="output"></div>
+
+
+<p><a href="hw6.html">Back to Homework 6</a></p>
+
+<script>
+    function searchCharacter() {
+       
+        var content = document.getElementById("content").value;
+        var searchChar = document.getElementById("searchChar").value.toLowerCase();
+
+    
+        var charCount = 0;
+        for (var i = 0; i < content.length; i++) {
+            if (content.charAt(i).toLowerCase() === searchChar) {
+                charCount++;
+            }
+        }
+
+        
+        var output = document.getElementById("output");
+        if (charCount > 0) {
+            output.innerText = "The character '" + searchChar + "' appears " + charCount + " times in the content.";
+        } else {
+            var newWindow = window.open("", "", "width=300,height=100");
+            newWindow.document.write("<p>Search character '" + searchChar + "' not found in the content you typed.</p>");
+            newWindow.document.write("<button onclick='window.close()'>Close Window</button>");
+            output.innerText = ""; 
+        }
+    }
+</script>
+
+</body>
+</html>
