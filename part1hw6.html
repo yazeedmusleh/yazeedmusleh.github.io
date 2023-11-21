@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 6 - Part 1</title>
+    
+</head>
+<body>
+
+<h1>Part 1: Decimal Calculations</h1>
+
+<form id="decimalForm">
+    <label for="decimalInput">Enter a number with 4 decimals:</label>
+    <input type="text" id="decimalInput" required>
+    <button type="button" onclick="calculate()">Submit</button>
+    <button type="button" onclick="clearForm()">Clear Form</button>
+</form>
+
+<div id="outputResult"></div>
+
+<script>
+    function calculate() {
+    const input = parseFloat(document.getElementById('decimalInput').value);
+
+    if (isNaN(input) || input.toFixed(4) !== input.toString()) {
+        document.getElementById('outputResult').innerText = "Error: You need to type a number with at least 4 decimals, please try again.";
+    } else {
+        const roundedInteger = Math.round(input);
+        const squareRoot = Math.round(Math.sqrt(input));
+        const roundedTenths = input.toFixed(1);
+        const roundedHundredths = input.toFixed(2);
+        const roundedThousandths = input.toFixed(3);
+
+        const outputMessage = `
+            You typed number ${input}
+            Rounded to the nearest integer = ${roundedInteger}
+            Square root rounded to integer = ${squareRoot}
+            Rounded to the nearest 10th position = ${roundedTenths}
+            Rounded to the nearest 100th position = ${roundedHundredths}
+            Rounded to the nearest 1000th position = ${roundedThousandths}
+        `;
+
+        document.getElementById('outputResult').innerText = outputMessage;
+    }
+}
+
+function clearForm() {
+    document.getElementById('decimalForm').reset();
+    document.getElementById('outputResult').innerText = "";
+}
+</script>
+
+<p><a href="hw6.html">Back to Homework 6</a></p>
+
+ </body>
+</html>
