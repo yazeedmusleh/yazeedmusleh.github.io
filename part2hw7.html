@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 7 - Part 2</title>
+</head>
+<body>
+    <h2>Part 2 - Save Cookies</h2>
+
+    <script> 
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        const userName = getCookie('userName');
+    
+        if (userName) {
+            
+            alert(`Welcome Back, ${userName}!`);
+        } else {
+            
+            const name = prompt('Enter your name:');
+            setCookie('userName', name);
+        }
+    
+        
+        function setCookie(name, value) {
+            document.cookie = `${name}=${value}`;
+        }
+    
+        
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+    });
+
+    </script>
+
+<a href="hw7.html">Back to Homework 7</a>
+
+</body>
+</html>
