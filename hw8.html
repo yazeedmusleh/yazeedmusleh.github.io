@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>JavaScript - Homework 8</title>
-    <meta name="description" content="Homework 8 for JavaScript">
-  </head>
-  <body>
-    <h1>Coming Soon!</h1>
-    <a href="index.html">Go back to Homework 1 page</a>
-  </body>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+  <h1>Homework 8 - AJAX Application</h1>
+<button type="button" onclick="loadDoc()">Get CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    console.log("THIS", this);
+    myFunction(this.responseXML);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+
+function myFunction(xml) {
+  const xmlDoc = xml;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table = "<tr><th>Artist</th><th>Title</th><th>Year</th></tr>";
+
+  for (let i = 0; i < x.length; i++) {
+    table += "<tr><td>" +
+      x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue +
+      "</td></tr>";
+  }
+
+  document.getElementById("demo").innerHTML = table;
+}
+
+</script>
+
+<h2>Explaination of AJAX</h2>
+<p>AJAX = Asynchronous JavaScript And XML.
+
+  AJAX is not a programming language.
+  
+  AJAX just uses a combination of:
+  
+  A browser built-in XMLHttpRequest object (to request data from a web server)
+  JavaScript and HTML DOM (to display or use the data)</p>
+<h2>REST API</h2>
+<a href="https://github.com/binance/binance-spot-api-docs">The Binance API</a>
+<p>In our quest to enhance the functionality and efficiency of our software development projects, we've explored a variety of APIs, and one that stands out is the Binance API. This RESTful API offers a wealth of features that align seamlessly with our current project requirements at [Your Imaginary Company Name].
+
+  Response Format
+  The Binance API provides responses in a clear and structured format, primarily in JSON. This makes it easy for our developers to parse and integrate the data into our applications effortlessly. The JSON format ensures consistency and simplicity, facilitating smooth communication between our systems and the API.
+  
+  Access and Authentication
+  To access the Binance API, developers are required to obtain an API key. This key serves as a secure authentication mechanism, ensuring that only authorized users can interact with the API. The API key management system is straightforward, streamlining the onboarding process for our development team.
+  
+  Cost Considerations
+  One of the notable advantages of the Binance API is its flexible pricing model. Our company values transparency, and Binance API offers a tiered pricing structure that caters to businesses of all sizes. The pay-as-you-go model allows us to scale our usage based on demand, ensuring cost-effectiveness and optimal resource utilization.
+  
+  Documentation
+  For developers eager to dive into the integration process, the Binance API documentation is a comprehensive resource. It provides detailed guides, examples, and endpoints reference, making it easy for our team to understand and leverage the full potential of the API. The documentation also includes real-world use cases and best practices, empowering our developers to implement features rapidly.
+  
+  Conclusion
+  In conclusion, the Binance API emerges as a robust choice for our project at [Your Imaginary Company Name]. Its JSON-formatted responses, secure authentication through API keys, flexible pricing, and comprehensive documentation align seamlessly with our development goals. By incorporating the Binance API into our workflow, we are confident in achieving enhanced functionality, efficiency, and overall project success.</p>
+  <p><a href="index.html">Go back to Homework page</a></p>
+</body>
 </html>
